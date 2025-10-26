@@ -289,7 +289,7 @@ function App() {
             <button className="modal-close" onClick={closeModal}>
               <FaTimes />
             </button>
-            <img src="%PUBLIC_URL%/ss1.png" alt="Jurong Port Website Preview" className="modal-image" />
+            <img src={`${process.env.PUBLIC_URL}/ss1.png`} alt="Jurong Port Website Preview" className="modal-image" />
           </div>
         </div>
       )}
