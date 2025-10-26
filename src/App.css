@@ -264,10 +264,15 @@ body {
 }
 
 .about-text {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   line-height: 1.8;
   color: var(--text-secondary);
-  text-align: center;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.about-text:last-child {
+  margin-bottom: 0;
 }
 
 /* Skills Section */
@@ -367,6 +372,12 @@ body {
   align-items: center;
   gap: 0.5rem;
   transition: all 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: inherit;
+  padding: 0;
 }
 
 .project-link:hover {
@@ -374,11 +385,64 @@ body {
   gap: 0.75rem;
 }
 
+.project-card-with-image {
+  padding: 0;
+  overflow: hidden;
+}
+
+.project-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.project-card-with-image:hover .project-image img {
+  transform: scale(1.05);
+}
+
+.project-card-with-image h3,
+.project-card-with-image p,
+.project-tech-tags {
+  padding: 0 2rem;
+}
+
+.project-card-with-image h3 {
+  margin-top: 1.5rem;
+}
+
+.project-tech-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+
+.project-tech-tags span {
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
 /* Experience Section */
 .timeline {
   position: relative;
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .timeline-item {
@@ -403,16 +467,57 @@ body {
   background-clip: text;
 }
 
+.timeline-company {
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
 .timeline-period {
   color: var(--accent-1);
   font-weight: 600;
   margin-bottom: 1rem;
+  font-size: 1rem;
 }
 
 .timeline-description {
   color: var(--text-secondary);
   line-height: 1.8;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+  list-style: none;
+  padding-left: 0;
+}
+
+.timeline-description li {
+  padding: 0.4rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.timeline-description li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: var(--accent-1);
+  font-weight: bold;
+}
+
+.timeline-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.timeline-tech span {
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
 /* Education Section */
@@ -420,9 +525,14 @@ body {
   background-color: var(--bg-secondary);
 }
 
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
 .education-item {
-  max-width: 800px;
-  margin: 0 auto;
   padding: 2rem;
   background-color: var(--card-bg);
   border-radius: 12px;
@@ -433,10 +543,11 @@ body {
 .education-item:hover {
   box-shadow: 0 10px 30px var(--shadow);
   border-color: var(--accent-2);
+  transform: translateY(-5px);
 }
 
 .education-item h3 {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   margin-bottom: 1rem;
   background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
   -webkit-background-clip: text;
@@ -444,10 +555,67 @@ body {
   background-clip: text;
 }
 
-.education-description {
+.education-school {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+}
+
+.education-location {
   color: var(--text-secondary);
-  line-height: 1.8;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.education-period {
+  color: var(--accent-1);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Achievements Section */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.achievement-item {
+  padding: 2rem;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.achievement-item:hover {
+  box-shadow: 0 10px 30px var(--shadow);
+  border-color: var(--accent-3);
+  transform: translateY(-5px);
+}
+
+.achievement-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent-3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.achievement-year {
+  color: var(--accent-2);
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.achievement-description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 1.05rem;
 }
 
 /* Contact Section */
@@ -532,7 +700,9 @@ body {
   }
 
   .skills-grid,
-  .projects-grid {
+  .projects-grid,
+  .education-grid,
+  .achievements-grid {
     grid-template-columns: 1fr;
   }
 
@@ -574,5 +744,104 @@ body {
 
   .logo {
     font-size: 1.2rem;
+  }
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 2rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 1200px;
+  max-height: 90vh;
+  background-color: transparent;
+  animation: slideUp 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close {
+  position: absolute;
+  top: -3rem;
+  right: 0;
+  background-color: var(--card-bg);
+  border: 2px solid var(--border-color);
+  color: var(--text-primary);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.modal-close:hover {
+  background-color: var(--accent-1);
+  color: white;
+  border-color: var(--accent-1);
+  transform: rotate(90deg);
+}
+
+.modal-image {
+  max-width: 100%;
+  max-height: 90vh;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-close {
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+  }
+
+  .modal-content {
+    max-width: 95%;
+  }
+
+  .modal-image {
+    max-height: 85vh;
   }
 }
